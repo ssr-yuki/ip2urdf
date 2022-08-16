@@ -1,0 +1,15 @@
+[package]
+author = "Yuki Onishi"
+edition = "2021"
+name = "ip2urdf"
+version = "0.1.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+structopt = {version = "0.3", default-features = false}
+
+[[bin]]
+name = "ip2urdf"
+test = false
+bench = false
