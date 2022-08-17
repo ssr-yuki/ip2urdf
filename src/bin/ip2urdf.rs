@@ -28,13 +28,12 @@ fn main() {
         text += opt.direct.unwrap().as_str();
     } else if opt.input.is_some() {
         text += fs::read_to_string(opt.input.clone().unwrap())
-            .expect(format!("File {:?} Not found", opt.input.unwrap()).as_str())
+            .unwrap_or_else(|_| panic!("File {:?} Not found", opt.input.unwrap()))
             .as_str();
     } else {
-        println!(
+        panic!(
             "You must either paste texts with the -d option or specify a file with the -i option."
         );
-        return;
     }
 
     let p = parser::parse_properties(text);
@@ -42,7 +41,7 @@ fn main() {
 
     if opt.output.is_some() {
         fs::write(opt.output.clone().unwrap(), output)
-            .expect(format!("Writing into {:?} failed", opt.output.unwrap()).as_str());
+            .unwrap_or_else(|_| panic!("Writing into {:?} failed", opt.output.unwrap()));
     } else {
         println!("{}", output);
     }

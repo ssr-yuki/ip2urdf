@@ -19,25 +19,25 @@ pub fn parse_properties(text: String) -> LinkProperties {
     let mut p = LinkProperties::default();
 
     for line in lines {
-        if line.find("物理プロパティ").is_some() {
+        if line.contains("物理プロパティ") {
             let name = line.split_whitespace().nth(1).unwrap().to_owned();
             p.name = Some(name);
-        } else if line.find("質量:").is_some() {
+        } else if line.contains("質量:") {
             let mass_str = line.split_whitespace().nth(1).unwrap_or("0.0");
             p.mass = Some(mass_str.parse().unwrap());
-        } else if line.find("X:").is_some() {
+        } else if line.contains("X:") {
             let com_x_str = line.split_whitespace().nth(1).unwrap_or("0.0");
             p.com_x = Some(com_x_str.parse().unwrap());
-        } else if line.find("Y:").is_some() {
+        } else if line.contains("Y:") {
             let com_y_str = line.split_whitespace().nth(1).unwrap_or("0.0");
             p.com_y = Some(com_y_str.parse().unwrap());
-        } else if line.find("Z:").is_some() {
+        } else if line.contains("Z:") {
             let com_z_str = line.split_whitespace().nth(1).unwrap_or("0.0");
             p.com_z = Some(com_z_str.parse().unwrap());
-        } else if line.find("Ixx").is_some() && p.ixx.is_none() {
+        } else if line.contains("Ixx") && p.ixx.is_none() {
             let ixx_str = line.split_whitespace().nth(1).unwrap_or("0.0");
             p.ixx = Some(ixx_str.parse().unwrap());
-        } else if line.find("Iyx Iyy").is_some() {
+        } else if line.contains("Iyx Iyy") {
             if p.ixy.is_none() {
                 let ixy_str = line.split_whitespace().nth(2).unwrap_or("0.0");
                 p.ixy = Some(ixy_str.parse().unwrap());
@@ -46,7 +46,7 @@ pub fn parse_properties(text: String) -> LinkProperties {
                 let iyy_str = line.split_whitespace().nth(8).unwrap_or("0.0");
                 p.iyy = Some(iyy_str.parse().unwrap());
             }
-        } else if line.find("Izx Izy Izz").is_some() {
+        } else if line.contains("Izx Izy Izz") {
             if p.ixz.is_none() {
                 let ixz_str = line.split_whitespace().nth(3).unwrap_or("0.0");
                 p.ixz = Some(ixz_str.parse().unwrap());

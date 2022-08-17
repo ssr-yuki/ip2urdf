@@ -3,8 +3,8 @@ use crate::parser::LinkProperties;
 pub fn generate(p: &LinkProperties) -> String {
     format!(
         "<link name=\"{}\">\n",
-        p.name.clone().unwrap_or("LINK".to_string())
-    ) + format!("  <inertial>\n").as_str()
+        p.name.clone().unwrap_or_else(|| "LINK".to_string())
+    ) + "  <inertial>\n".to_string().as_str()
         + format!(
             "    <origin xyz=\"{} {} {}\" rpy=\"0 0 0\"/>\n",
             p.com_x.unwrap_or(0.0),
@@ -23,8 +23,8 @@ pub fn generate(p: &LinkProperties) -> String {
             p.izz.unwrap_or(1.0)
         )
         .as_str()
-        + format!("  </inertial>\n").as_str()
-        + format!("</link>\n").as_str()
+        + "  </inertial>\n".to_string().as_str()
+        + "</link>\n".to_string().as_str()
 }
 
 #[test]
