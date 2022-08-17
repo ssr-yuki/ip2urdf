@@ -74,3 +74,15 @@ cargo run --bin ip2urdf -- -d "物理プロパティ Part1
     Rz:    0.00000000 rad (相対誤差 = 0.000000%)
 "
 ```
+
+The output for these examples is:
+
+```xml
+<link name="Part1">
+  <inertial>
+    <origin xyz="0 -0 0" rpy="0 0 0"/>
+    <mass value="6000"/>
+    <inertia ixx="6500" ixy="-0" ixz="0" iyy="5000" iyz="0" izz="2500"/>
+  </inertial>
+</link>
+```
