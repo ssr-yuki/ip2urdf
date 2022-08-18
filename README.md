@@ -95,3 +95,11 @@ The output for these examples is:
   </inertial>
 </link>
 ```
+
+### Tips
+
+Using the `xsel` command, you can directly copy the result on the clipboard.
+
+```bash
+ip2urdf -i sample.txt | xsel --clipboard --input
+```
