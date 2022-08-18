@@ -8,6 +8,15 @@ Since the tool is currently hard-coded, the Autodesk Inventor 2020 (Japanese) is
 
 We welcome any contribution, including operation check reports in other Inventor versions!
 
+
+## Installation
+
+You can install the tool into your computer with the following command:
+
+```bash
+cargo install --path . --bin ip2urdf
+```
+
 ## Usage
 
 ### Options
@@ -33,19 +42,19 @@ OPTIONS:
 Load a text file and display the result:
 
 ```bash
-cargo run --bin ip2urdf -- -i sample.txt
+ip2urdf -i sample.txt
 ```
 
 Load a text file and write into a specified file:
 
 ```bash
-cargo run --bin ip2urdf -- -i sample.txt -o output.txt
+ip2urdf -i sample.txt -o output.xml
 ```
 
 Read properties from the argument and display the result:
 
 ```bash
-cargo run --bin ip2urdf -- -d "物理プロパティ Part1
+ip2urdf -d '物理プロパティ Part1
 一般的なプロパティ:
     材料:    {一般}
     密度:    1.00000000 g/cm^3
@@ -72,7 +81,7 @@ cargo run --bin ip2urdf -- -d "物理プロパティ Part1
     Rx:    0.00000000 rad (相対誤差 = 0.000000%)
     Ry:    0.00000000 rad (相対誤差 = 0.000000%)
     Rz:    0.00000000 rad (相対誤差 = 0.000000%)
-"
+'
 ```
 
 The output for these examples is:
